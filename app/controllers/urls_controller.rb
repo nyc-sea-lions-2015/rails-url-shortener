@@ -16,5 +16,7 @@ class UrlsController < ApplicationController
   end
 
   def find_long #('/:short' redirects)
+     @url = Url.find_by(short: params[:short_url])
+     redirect_to "#{@url.long}"
   end
 end
