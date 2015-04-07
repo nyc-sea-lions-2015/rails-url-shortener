@@ -9,6 +9,7 @@
 
 <% if @urls.count > 0 %>
   <% @urls.each do |url|%>
-  <%= url.short %>
+  <%= url.short %><br>
+  <h4>clicked on <%=url.click_count%> times </h4>
   <%end%>
 <%end%>

@@ -6,10 +6,14 @@ class Url < ActiveRecord::Base
 
   def convert
      range = [*'0'..'9', *'a'..'z', *'A'..'Z']
-     short_url = Array.new(8){range.sample}.join
-    self.short = short_url
+     unless self.short
+        short_url = Array.new(8){range.sample}.join
+        self.short = short_url
+     end
   end
 
 
 
 end
+
+

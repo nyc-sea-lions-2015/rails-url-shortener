@@ -2,7 +2,7 @@ class UrlsController < ApplicationController
 
   def index #('/')
     @url = Url.new
-    @urls = Url.all
+    @urls = Url.all.order(:created_at)
   end
 
   def create #(post '/urls')
@@ -17,6 +17,8 @@ class UrlsController < ApplicationController
 
   def find_long #('/:short' redirects)
      @url = Url.find_by(short: params[:short_url])
+     @url.click_count += 1
+     @url.save!
      redirect_to "#{@url.long}"
   end
 end
