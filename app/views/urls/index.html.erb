@@ -1,0 +1,9 @@
+<h1>Welcome to our awesome url shortener</h1>
+<h2>Enter the url you want to shorten</h2>
+<%= form_for @url, url: {action: "create"}, html: {class: "entry_form"} do |f| %>
+
+  <%= f.text_field :long %><br>
+  <%= f.submit  "Enter url" %>
+
+<%end%>
+
