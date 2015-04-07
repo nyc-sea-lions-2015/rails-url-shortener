@@ -6,8 +6,15 @@ class UrlsController < ApplicationController
   end
 
   def create #(post '/urls')
+    @new_url = Url.new(long: params[:url][:long])
+
+      if @new_url.save!
+        redirect_to '/'
+      else
+        [400, "Url not Converted"]
+      end
   end
 
-  def convert #('/:short' redirects)
+  def find_long #('/:short' redirects)
   end
 end

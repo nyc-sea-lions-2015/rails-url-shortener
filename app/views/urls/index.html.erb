@@ -7,3 +7,8 @@
 
 <%end%>
 
+<% if @urls.count > 0 %>
+  <% @urls.each do |url|%>
+  <%= url.short %>
+  <%end%>
+<%end%>
