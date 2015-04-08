@@ -7,21 +7,19 @@ class UrlsController < ApplicationController
 
   def create #(post '/urls')
     @new_url = Url.new(long: params[:url][:long])
-
-      if @new_url.save
-        redirect_to '/'
-      else
-        [400, "Url not Converted"]
-        flash[:notice] = "That url was invalid"
-        redirect_to '/'
-      end
+    if @new_url.save
+      redirect_to '/'
+    else
+      [400, "Url not Converted"]
+      flash[:notice] = "That url was invalid"
+      redirect_to '/'
+    end
   end
 
   def find_long #('/:short' redirects)
-
-     @url = Url.find_by(short: params[:short_url])
-     @url.click_count += 1
-     @url.save!
-     redirect_to "#{@url.long}"
+    @url = Url.find_by(short: params[:short_url])
+    @url.click_count += 1
+    @url.save!
+    redirect_to "#{@url.long}"
   end
 end
