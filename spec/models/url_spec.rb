@@ -14,10 +14,4 @@ describe Url do
       expect(Url.where(short: url.short)).to exist
     end
   end
-
-
-
-
-
-
 end
