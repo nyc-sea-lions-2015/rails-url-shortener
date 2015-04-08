@@ -1,0 +1,21 @@
+
+<h1>Welcome to our awesome url shortener</h1>
+<h2>Enter the url you want to shorten</h2>
+
+
+<%= form_for @url, url: {action: "create"}, html: {class: "entry_form"} do |f| %>
+  <%= f.text_field :long %><br>
+  <%= f.submit  "Enter url" %>
+<%end%>
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+
+<% if @urls.count > 0 %>
+  <% @urls.each do |url|%>
+  <%= link_to url.short, "/#{url.short}" %><br>
+  <h4>clicked on <%=url.click_count%> times </h4>
+  <%end%>
+<%end%>
